@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        .color-box {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .color-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .light-container {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .dark-container {
+            background-color: #e1e1e1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Display</h1>
+    <div class="light-container">
+        <h2>Light Colors</h2>
+        <div class="container" id="light-colors"></div>
+    </div>
+    <div class="dark-container">
+        <h2>Dark Colors</h2>
+        <div class="container" id="dark-colors"></div>
+    </div>
+
+    <script>
+        // Color data from JSON
+        const colors = {
+            "c0": {"darkValue": "#FFFFFF", "lightValue": "#000000"},
+            "c6": {"darkValue": "#FFFFFF", "lightValue": "#FFFFFF"},
+            "c11": {"darkValue": "#000000", "lightValue": "#FFFFFF"},
+            "c15": {"darkValue": "#00639B", "lightValue": "#005C90"},
+            "c16": {"darkValue": "#007BC1", "lightValue": "#0076B8"},
+            "c17": {"darkValue": "#0094E9", "lightValue": "#0090E2"},
+            "c18": {"darkValue": "#7C9FBB", "lightValue": "#7799B5"},
+            "c19": {"darkValue": "#00714B", "lightValue": "#0C6F4E"},
+            "c20": {"darkValue": "#008A5A", "lightValue": "#06895D"},
+            "c21": {"darkValue": "#01AB70", "lightValue": "#00A06A"},
+            "c22": {"darkValue": "#00D189", "lightValue": "#00AF74"},
+            "c24": {"darkValue": "#743ED4", "lightValue": "#6534BC"},
+            "c25": {"darkValue": "#8B5ADC", "lightValue": "#7F4CD4"},
+            "c26": {"darkValue": "#A581F2", "lightValue": "#926CE3"},
+            "c27": {"darkValue": "#BCA3F1", "lightValue": "#A585E7"},
+            "c29": {"darkValue": "#D66700", "lightValue": "#CD6300"},
+            "c30": {"darkValue": "#E77D1B", "lightValue": "#DF7717"},
+            "c31": {"darkValue": "#F8A545", "lightValue": "#E4871C"},
+            "c32": {"darkValue": "#FFC683", "lightValue": "#E8993B"},
+            "c33": {"darkValue": "#F4C82D", "lightValue": "#E59700"},
+            "c34": {"darkValue": "#EB7A12", "lightValue": "#E8760C"},
+            "c35": {"darkValue": "#EA3333", "lightValue": "#E93232"},
+            "c36": {"darkValue": "#282D35", "lightValue": "#FDFEFF"},
+            "c37": {"darkValue": "#0E0F13", "lightValue": "#E3E5EB"},
+            "c38": {"darkValue": "#323E47", "lightValue": "#F1F2F6"},
+            "c39": {"darkValue": "#1C2227", "lightValue": "#D4D6DD"},
+            "c40": {"darkValue": "#2E363D", "lightValue": "#2E363D"},
+            "c41": {"darkValue": "#6A41E6", "lightValue": "#4163BC"},
+            "c42": {"darkValue": "#3E5EC1", "lightValue": "#2C4BAC"},
+            "c43": {"darkValue": "#4C6ED8", "lightValue": "#3C5DC5"},
+            "c44": {"darkValue": "#6184EE", "lightValue": "#5273D8"},
+            "c45": {"darkValue": "#8EA5EE", "lightValue": "#6484E6"},
+            "c46": {"darkValue": "#006A78", "lightValue": "#006572"},
+            "c47": {"darkValue": "#00899C", "lightValue": "#007F91"},
+            "c48": {"darkValue": "#00A0B6", "lightValue": "#0094A8"},
+            "c49": {"darkValue": "#00CCD9", "lightValue": "#00A5B0"},
+            "c50": {"darkValue": "#CE322B", "lightValue": "#BE302B"},
+            "c51": {"darkValue": "#E9433B", "lightValue": "#DC3C35"},
+            "c52": {"darkValue": "#F6554D", "lightValue": "#F45048"},
+            "c53": {"darkValue": "#F7726C", "lightValue": "#FC6861"},
+            "c60": {"darkValue": "#238D16", "lightValue": "#32831D"},
+            "c61": {"darkValue": "#34A426", "lightValue": "#389122"},
+            "c62": {"darkValue": "#47C537", "lightValue": "#3EA126"},
+            "c63": {"darkValue": "#4EDF3D", "lightValue": "#46AF2D"}
+        };
+
+        // Function to generate color boxes
+        function generateColorBoxes() {
+            const lightContainer = document.getElementById('light-colors');
+            const darkContainer = document.getElementById('dark-colors');
+
+            Object.keys(colors).forEach(key => {
+                const color = colors[key];
+                const darkValue = color.darkValue;
+                const lightValue = color.lightValue;
+
+                // Create light color box
+                const lightColorBox = document.createElement('div');
+                lightColorBox.classList.add('color-box');
+                lightColorBox.style.backgroundColor = lightValue;
+
+                const lightColorName = document.createElement('div');
+                lightColorName.classList.add('color-name');
+                lightColorName.textContent = key;
+
+                const lightColorValue = document.createElement('div');
+                lightColorValue.textContent = lightValue;
+
+                lightColorBox.appendChild(lightColorName);
+                lightColorBox.appendChild(lightColorValue);
+                lightContainer.appendChild(lightColorBox);
+
+                // Create dark color box
+                const darkColorBox = document.createElement('div');
+                darkColorBox.classList.add('color-box');
+                darkColorBox.style.backgroundColor = darkValue;
+
+                const darkColorName = document.createElement('div');
+                darkColorName.classList.add('color-name');
+                darkColorName.textContent = key;
+
+                const darkColorValue = document.createElement('div');
+                darkColorValue.textContent = darkValue;
+
+                darkColorBox.appendChild(darkColorName);
+                darkColorBox.appendChild(darkColorValue);
+                darkContainer.appendChild(darkColorBox);
+            });
+        }
+
+        // Generate color boxes on page load
+        window.onload = generateColorBoxes;
+    </script>
+</body>
+</html>
