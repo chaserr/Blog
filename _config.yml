@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
+title: 只争朝夕 #博客名
+subtitle: 朝闻道，夕死可以。 #博客副标题
+description: #给搜索引擎看的，对站点的描述，可以自定义
+author: 韩远 #作者名称，显示在网站最底部
+language: zh-Hans #语言选择，这里表示中文
+email: #你的联系邮箱
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://chaserr.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -96,9 +96,42 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+    type: git #部署类型，使用github
+    repository: https://github.com/chaserr/chaserr.github.io.git #部署的仓库的SSH
+    branch: master #部署分支， 一般使用master主分支
+    message: update #默认类型
+
+# #插件配置
+# plugins: hexo-generator-feed 
+# #- hexo-generator-sitemap 
+# feed:
+#   type: atom ##feed类型 atom或者rss2
+#   path: atom.xml ##feed路径
+#   limit: 20  ##feed文章最小数量
+
+# search:
+#   path: search.xml
+#   field: post
+
+#   # 搜索插件 hexo-generator-sitemap
+# swiftype_key: 7Qoo1zkKbfSsp5bzUjQu
+
+# # Disqus  disqus评论,  与多说类似, 国内一般使用多说
+# #disqus_shortname: 
+# duoshuo_shortname: chaser
+
+# # 多说热评文章 true 或者 false
+# duoshuo_hotartical: true
+
+# # 多说分享服务
+# duoshuo_share: true
+# duoshuo_info:
+#   ua_enable: true
+#   admin_enable: false
+#   user_id:
+#       admin_nickname:
